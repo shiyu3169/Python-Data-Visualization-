@@ -1,5 +1,7 @@
 from bokeh.plotting import figure, output_file, show, ColumnDataSource, save
 from bokeh.models.tools import HoverTool
+from bokeh.transform import factor_cmap
+from bokeh.palettes import Blues8
 import pandas
 
 # Read in csv
@@ -28,7 +30,11 @@ p.hbar(
   right="Horsepower",
   left=0,
   height=0.4,
-  color="orange",
+  fill_color=factor_cmap(
+    "Car",
+    palette=Blues8,
+    factors=car_list
+  ),
   fill_alpha=0.5,
   source=source
 )
