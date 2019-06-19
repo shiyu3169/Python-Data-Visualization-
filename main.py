@@ -2,6 +2,7 @@ from bokeh.plotting import figure, output_file, show, ColumnDataSource, save
 from bokeh.models.tools import HoverTool
 from bokeh.transform import factor_cmap
 from bokeh.palettes import Blues8
+from bokeh.embed import components
 import pandas
 
 # Read in csv
@@ -63,3 +64,8 @@ p.add_tools(hover)
 
 # Save file
 save(p)
+
+# Print out div and script
+script, div = components(p)
+print(div)
+print(script)
